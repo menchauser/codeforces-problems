@@ -14,19 +14,17 @@
  
 */
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class Problem1A {
     public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String input = in.readLine();
-        StringTokenizer tokenizer = new StringTokenizer(input, " ");
-        int n = Integer.parseInt(tokenizer.nextToken());
-        int m = Integer.parseInt(tokenizer.nextToken());
-        int a = Integer.parseInt(tokenizer.nextToken());
+        Scanner scanner = new Scanner(System.in);
+        Integer[] inputs = Stream.generate(scanner::nextInt).limit(3).toArray(Integer[]::new);
+        int n = inputs[0];
+        int m = inputs[1];
+        int a = inputs[2];
 
         long result = (long) (Math.ceil((double) n / a) * Math.ceil((double) m / a));
         System.out.println(result);
