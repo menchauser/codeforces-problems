@@ -16,44 +16,23 @@
 
 
 import java.util.Scanner;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 public class Problem4A {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         long input = scanner.nextLong();
 
-        //Stream.generate(sumPairGenerator(input)).
-        // haha
-        boolean yes = Stream.generate(scanner::nextInt)
-                .limit(1)
-                .allMatch(val -> val % 4 == 0);
-
-        if (yes) {
-            System.out.println("YES");
-        } else {
+        if (input <= 2) {
             System.out.println("NO");
+            return;
         }
-    }
-    // todo
-    static Supplier<LongPair> sumPairGenerator(long val) {
-        final long a = 0;
-        final long b = val - a;
 
-        return () -> {
-            return new LongPair(a, b);
-        };
-    }
-
-    static class LongPair {
-        private final long fst;
-        private final long snd;
-
-        public LongPair(long fst, long snd) {
-            this.fst = fst;
-            this.snd = snd;
+        if (input % 2 != 0) {
+            System.out.println("NO");
+            return;
         }
+
+        System.out.println("YES");
     }
 }
 /*
