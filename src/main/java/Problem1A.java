@@ -22,7 +22,14 @@ public class Problem1A {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         Integer[] inputs = Stream.generate(scanner::nextInt).limit(3).toArray(Integer[]::new);
-        Stream.of(inputs).limit(2).map(val -> Math.ceil((double) val / inputs[2])).reduce((m, n) -> m * n).map(Math::round).ifPresent(System.out::println);
+        Stream.of(inputs)
+                .limit(2)
+                .map(Double::valueOf)
+                .map(val -> val / inputs[2])
+                .map(Math::ceil)
+                .reduce((m, n) -> m * n)
+                .map(Math::round)
+                .ifPresent(System.out::println);
     }
 }
 /*
