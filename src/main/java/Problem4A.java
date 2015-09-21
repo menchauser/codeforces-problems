@@ -16,11 +16,11 @@
 
 
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class Problem4A {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        long input = scanner.nextLong();
+        long input = Stream.of(System.in).map(Scanner::new).map(Scanner::nextLong).findFirst().get();
 
         if (input <= 2) {
             System.out.println("NO");
