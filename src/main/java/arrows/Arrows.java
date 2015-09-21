@@ -5,6 +5,16 @@ import java.util.function.Function;
 
 public final class Arrows {
 
+    public static void main(String[] args) {
+        Function<Integer, Integer> f = x -> x / 2;
+        Function<Integer, Integer> g = x -> 3 * x + 1;
+
+        Function<Integer, Integer> h = liftA2((x, y) -> x + y, f, g);
+        int x = 8;
+        int result = h.apply(x);
+        System.out.println("(x / 2) + (3 * x + 1) = " + result + " // where x = " + x);
+    }
+
     // (b -> c) >>> (c -> d) ==> (b -> d)
     public static <B, C, D> Function<B, D> compose(Function<B, C> larrow, Function<C, D> rarrow) {
         return b -> rarrow.apply(larrow.apply(b));
@@ -68,6 +78,11 @@ public final class Arrows {
         public Pair(B first, C second) {
             this.first = first;
             this.second = second;
+        }
+
+        @Override
+        public String toString() {
+            return "(" + first + "," + second + ")";
         }
     }
 
