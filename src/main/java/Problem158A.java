@@ -14,10 +14,13 @@ public class Problem158A {
         }
 
         if (results[k-1] == 0) {
-            while (k > 0 && results[k-1] == 0) {
+            while (k > 1 && results[k-1] == 0) {
                 k--;
             }
-            if (k < 0) {
+            if (k > 0) {
+                k--;
+            }
+            if (k < 0 || results[k] == 0) {
                 System.out.println("0");
                 return;
             }
